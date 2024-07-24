@@ -26,31 +26,32 @@ const puppeteer = require('puppeteer');
     //  await page.waitForSelector('form[name="form1"]');
 
      // 额外等待一段时间以确保页面稳定
-     await new Promise(resolve => setTimeout(resolve, 2000));
+     await new Promise(resolve => setTimeout(resolve, 5000));
 
     // 执行JavaScript代码并捕捉错误
     await page.evaluate(async () => {
         var form = document.forms['form1'];
         var action = gRsvWOpeInstSrchVacantAction;
         doSearchHome(form, action);
-        // // 返回执行后的结果，假设结果在某个特定元素中
         // return new Promise((resolve) => {
-        //         // const resultElement = document.querySelector('table#week-info'); // 根据实际情况调整选择器
-        //         const resultElement = document.querySelectorAll('table[id="week-info"]');
-        //         resolve(resultElement ? resultElement : 'No result');
+        //     resolve(document.getElementById('prwrc1000').innerHTML);
         // });
     });
     
-    // await new Promise(resolve => setTimeout(resolve, 5000));
-    await page.waitForSelector('#week-info');
+    await new Promise(resolve => setTimeout(resolve, 3000));
+    const selector = 'form[name="form1"]';
 
-    const resultElement = await page.evaluate(() => {
-        const resultElement = document.querySelector('table#week-info'); // 根据实际情况调整选择器
-        // const resultElement = document.querySelectorAll('table[id="week-info"]');
-        return resultElement ? resultElement : 'No result';
+    await page.waitForSelector(selector);   
+
+    const result= await page.evaluate((selector) => {        
+        // 返回执行后的结果，假设结果在某个特定元素中
+        return new Promise((resolve) => {
+            resolve(document.getElementById('week-info').innerHTML);
+        });
+
     });
 
-    console.log('Result:', resultElement);
+    console.log('Result:', result);
     // try {
     // } catch (error) {
     //     console.error('Error executing JavaScript XXXX:', error);
@@ -58,6 +59,6 @@ const puppeteer = require('puppeteer');
     
 
     // 关闭浏览器
-    await browser.close();
+    // await browser.close();
 
 })();

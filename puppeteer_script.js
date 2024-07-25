@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 
 (async () => {
     // 启动无头浏览器
-    const browser = await puppeteer.launch({ headless: false }); // 设为 false 以便调试时查看浏览器操作
+    const browser = await puppeteer.launch({ headless: true }); // 设为 false 以便调试时查看浏览器操作
     const page = await browser.newPage();
 
     // 访问目标页面 Cookieの設定
@@ -26,39 +26,39 @@ const puppeteer = require('puppeteer');
     //  await page.waitForSelector('form[name="form1"]');
 
      // 额外等待一段时间以确保页面稳定
-     await new Promise(resolve => setTimeout(resolve, 5000));
+     await new Promise(resolve => setTimeout(resolve, 2000));
 
-    // 执行JavaScript代码并捕捉错误
+    // 进行检索
     await page.evaluate(async () => {
         var form = document.forms['form1'];
         var action = gRsvWOpeInstSrchVacantAction;
         doSearchHome(form, action);
-        // return new Promise((resolve) => {
-        //     resolve(document.getElementById('prwrc1000').innerHTML);
-        // });
     });
     
-    await new Promise(resolve => setTimeout(resolve, 3000));
-    const selector = 'form[name="form1"]';
+    await new Promise(resolve => setTimeout(resolve, 2000));
 
-    await page.waitForSelector(selector);   
+    // 获取周信息
+    // 执行javascript:doSearch(document.form1, gRsvWOpeInstSrchVacantAjaxAction);代码并返回结果
+    await page.evaluate(async () => {
+        var form = document.forms['form1'];
+        var action = gRsvWOpeInstSrchVacantAjaxAction;
+        doSearch(form, action);
+    });
+  
+    await new Promise(resolve => setTimeout(resolve, 2000));
 
-    const result= await page.evaluate((selector) => {        
-        // 返回执行后的结果，假设结果在某个特定元素中
-        return new Promise((resolve) => {
-            resolve(document.getElementById('week-info').innerHTML);
-        });
-
+    // 获取画面内容 返回结果
+    const jsonText = await page.evaluate(async () => {
+            return new Promise((resolve) => {
+                resolve(document.body.textContent);
+            });
     });
 
-    console.log('Result:', result);
-    // try {
-    // } catch (error) {
-    //     console.error('Error executing JavaScript XXXX:', error);
-    // }
-    
+    // convert to json
+    const jsonObj = JSON.parse(jsonText);
+    console.log('jsonObj:', jsonObj.result[1].timeResult);
 
     // 关闭浏览器
-    // await browser.close();
+    await browser.close();
 
 })();

@@ -1,5 +1,10 @@
 {
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": "explicit"
-      }
+      },
+      "eslint.validate": [
+        "typescript",
+        "typescriptreact"
+      ],
+      "files.eol": "\n",
 }

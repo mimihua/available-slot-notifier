@@ -13,10 +13,12 @@ export class DiscordBot {
   private isLoggedIn: boolean;
 
   private constructor() {
-    this.client = new Client({intents: [
-      GatewayIntentBits.Guilds,
-      GatewayIntentBits.GuildMessages,
-      GatewayIntentBits.MessageContent]});
+    this.client = new Client({
+      intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent],
+    });
     this.token = process.env.DISCORD_TOKEN?.toString() ?? "";
     this.isLoggedIn = false;
 

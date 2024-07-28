@@ -10,7 +10,7 @@
 import * as logger from "firebase-functions/logger";
 
 import {onSchedule} from "firebase-functions/v2/scheduler";
-import {helloworld} from "./puppeteer-script";
+import {checkAndNotifyTennisSlots} from "./checkAndNotifyTennisSlots";
 
 // Start writing functions
 // https://firebase.google.com/docs/functions/typescript
@@ -18,7 +18,7 @@ import {helloworld} from "./puppeteer-script";
 export const scheduledFunction = onSchedule("* * * * *", async () => {
   logger.log("Schedule function triggered!");
   // Fetch all user details.
-  await helloworld();
+  await checkAndNotifyTennisSlots();
 
   logger.log("Schedule function completed!");
 });

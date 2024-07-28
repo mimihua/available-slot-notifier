@@ -6,5 +6,8 @@
         "typescript",
         "typescriptreact"
       ],
+      "prettier.printWidth": 80,
+      "prettier.requireConfig": true,
       "files.eol": "\n",
+      
 }

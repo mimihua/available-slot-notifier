@@ -1,7 +1,7 @@
 
 import * as dotenv from "dotenv";
 import { Webhooks } from "./webhook";
-import { findAvailableTennisSlots } from "./findAvailableTennisSlots";
+import { TennisSlot } from "./park/TennisSlot";
 
 
 // 加载环境变量
@@ -24,12 +24,12 @@ export async function checkAndNotifyTennisSlots() {
 
   // puppeteer-script.ts 
   // 利用 Puppeteer 获取网页内容并返回内容
-  findAvailableTennisSlots();
+
+  // 获取网球场空位信息
+
 
   // webhook.ts
   // 发送简单消息
   Webhooks.sendSimpleMessage();
 
 }
-
-checkAndNotifyTennisSlots();

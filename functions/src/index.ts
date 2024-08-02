@@ -11,14 +11,26 @@ import * as logger from "firebase-functions/logger";
 
 import {onSchedule} from "firebase-functions/v2/scheduler";
 import {checkAndNotifyTennisSlots} from "./checkAndNotifyTennisSlots";
+import {onRequest } from "firebase-functions/v2/https";
+// import {onCall, onRequest} from "firebase-functions/v2/https";
+// import { getFirestore } from "firebase-admin/firestore";
 
 // Start writing functions
 // https://firebase.google.com/docs/functions/typescript
 
-export const scheduledFunction = onSchedule("* * * * *", async () => {
+export const scheduledFunction = onSchedule("*/30 * * * *", async () => {
   logger.log("Schedule function triggered!");
   // Fetch all user details.
   await checkAndNotifyTennisSlots();
 
   logger.log("Schedule function completed!");
+});
+
+export const helloWorld = onRequest({
+  memory: "1GiB",
+  timeoutSeconds: 300,
+},async () => {
+
+  await checkAndNotifyTennisSlots();
+
 });

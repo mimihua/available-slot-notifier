@@ -2,12 +2,12 @@ import axios from "axios";
 
 export class Webhooks {
   
-  private static readonly webhookUrl: string = "https://discord.com/api/webhooks/1267023633793028177/cFbEvAR6ZmJl_A1Lhkn26Rm1O_OPFZYo8d4YcHe1yEsOK072tVOsHjZ1XkHXKYwebhDH";
+  private readonly webhookUrl: string = "https://discord.com/api/webhooks/1267023633793028177/cFbEvAR6ZmJl_A1Lhkn26Rm1O_OPFZYo8d4YcHe1yEsOK072tVOsHjZ1XkHXKYwebhDH";
 
-  public static async sendSimpleMessage() {
+  public async sendSimpleMessage(info: string) {
     try {
       const response = await axios.post(this.webhookUrl, {
-        content: "这是一个测试消息",
+        content: info,
       });
       if (response.status === 204) {
         console.log("消息发送成功");
@@ -17,7 +17,7 @@ export class Webhooks {
     }
   }
 
-  public static async sendEmbedMessage() {
+  public async sendEmbedMessage() {
     try {
       const response = await axios.post(this.webhookUrl, {
         content: "这是一个带有嵌入内容的消息",
@@ -61,3 +61,7 @@ export class Webhooks {
   }
 
 }
+
+// test
+// const webhooks = new Webhooks();
+// webhooks.sendSimpleMessage("这是一个简单的消息");

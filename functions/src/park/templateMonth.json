@@ -1,0 +1,349 @@
+{
+    "startWeek": 5,
+    "result": [
+        {
+            "imgURL": "image\/calendar\/svg\/calendar_non-operatingtime_outline.svg",
+            "week": 5,
+            "dayYMD": 20240801,
+            "alt": "受付期間外",
+            "holidayFlg": 1,
+            "day": 1,
+            "holiday": "",
+            "status": 700
+        },
+        {
+            "imgURL": "image\/calendar\/svg\/calendar_few-available_outline.svg",
+            "week": 6,
+            "dayYMD": 20240802,
+            "alt": "一部空き",
+            "holidayFlg": 1,
+            "day": 2,
+            "holiday": "",
+            "status": 100
+        },
+        {
+            "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+            "week": 7,
+            "dayYMD": 20240803,
+            "alt": "予約あり",
+            "holidayFlg": 2,
+            "day": 3,
+            "holiday": "",
+            "status": 200
+        },
+        {
+            "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+            "week": 1,
+            "dayYMD": 20240804,
+            "alt": "予約あり",
+            "holidayFlg": 3,
+            "day": 4,
+            "holiday": "",
+            "status": 200
+        },
+        {
+            "imgURL": "image\/calendar\/svg\/calendar_few-available_outline.svg",
+            "week": 2,
+            "dayYMD": 20240805,
+            "alt": "一部空き",
+            "holidayFlg": 1,
+            "day": 5,
+            "holiday": "",
+            "status": 100
+        },
+        {
+            "imgURL": "image\/calendar\/svg\/calendar_few-available_outline.svg",
+            "week": 3,
+            "dayYMD": 20240806,
+            "alt": "一部空き",
+            "holidayFlg": 1,
+            "day": 6,
+            "holiday": "",
+            "status": 100
+        },
+        {
+            "imgURL": "image\/calendar\/svg\/calendar_few-available_outline.svg",
+            "week": 4,
+            "dayYMD": 20240807,
+            "alt": "一部空き",
+            "holidayFlg": 1,
+            "day": 7,
+            "holiday": "",
+            "status": 100
+        },
+        {
+            "imgURL": "image\/calendar\/svg\/calendar_few-available_outline.svg",
+            "week": 5,
+            "dayYMD": 20240808,
+            "alt": "一部空き",
+            "holidayFlg": 1,
+            "day": 8,
+            "holiday": "",
+            "status": 100
+        },
+        {
+            "imgURL": "image\/calendar\/svg\/calendar_few-available_outline.svg",
+            "week": 6,
+            "dayYMD": 20240809,
+            "alt": "一部空き",
+            "holidayFlg": 1,
+            "day": 9,
+            "holiday": "",
+            "status": 100
+        },
+        {
+            "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+            "week": 7,
+            "dayYMD": 20240810,
+            "alt": "予約あり",
+            "holidayFlg": 2,
+            "day": 10,
+            "holiday": "",
+            "status": 200
+        },
+        {
+            "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+            "week": 1,
+            "dayYMD": 20240811,
+            "alt": "予約あり",
+            "holidayFlg": 4,
+            "day": 11,
+            "holiday": "祝日",
+            "status": 200
+        },
+        {
+            "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+            "week": 2,
+            "dayYMD": 20240812,
+            "alt": "予約あり",
+            "holidayFlg": 4,
+            "day": 12,
+            "holiday": "祝日",
+            "status": 200
+        },
+        {
+            "imgURL": "image\/calendar\/svg\/calendar_few-available_outline.svg",
+            "week": 3,
+            "dayYMD": 20240813,
+            "alt": "一部空き",
+            "holidayFlg": 1,
+            "day": 13,
+            "holiday": "",
+            "status": 100
+        },
+        {
+            "imgURL": "image\/calendar\/svg\/calendar_few-available_outline.svg",
+            "week": 4,
+            "dayYMD": 20240814,
+            "alt": "一部空き",
+            "holidayFlg": 1,
+            "day": 14,
+            "holiday": "",
+            "status": 100
+        },
+        {
+            "imgURL": "image\/calendar\/svg\/calendar_few-available_outline.svg",
+            "week": 5,
+            "dayYMD": 20240815,
+            "alt": "一部空き",
+            "holidayFlg": 1,
+            "day": 15,
+            "holiday": "",
+            "status": 100
+        },
+        {
+            "imgURL": "image\/calendar\/svg\/calendar_few-available_outline.svg",
+            "week": 6,
+            "dayYMD": 20240816,
+            "alt": "一部空き",
+            "holidayFlg": 1,
+            "day": 16,
+            "holiday": "",
+            "status": 100
+        },
+        {
+            "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+            "week": 7,
+            "dayYMD": 20240817,
+            "alt": "予約あり",
+            "holidayFlg": 2,
+            "day": 17,
+            "holiday": "",
+            "status": 200
+        },
+        {
+            "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+            "week": 1,
+            "dayYMD": 20240818,
+            "alt": "予約あり",
+            "holidayFlg": 3,
+            "day": 18,
+            "holiday": "",
+            "status": 200
+        },
+        {
+            "imgURL": "image\/calendar\/svg\/calendar_few-available_outline.svg",
+            "week": 2,
+            "dayYMD": 20240819,
+            "alt": "一部空き",
+            "holidayFlg": 1,
+            "day": 19,
+            "holiday": "",
+            "status": 100
+        },
+        {
+            "imgURL": "image\/calendar\/svg\/calendar_few-available_outline.svg",
+            "week": 3,
+            "dayYMD": 20240820,
+            "alt": "一部空き",
+            "holidayFlg": 1,
+            "day": 20,
+            "holiday": "",
+            "status": 100
+        },
+        {
+            "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+            "week": 4,
+            "dayYMD": 20240821,
+            "alt": "予約あり",
+            "holidayFlg": 1,
+            "day": 21,
+            "holiday": "",
+            "status": 200
+        },
+        {
+            "imgURL": "image\/calendar\/svg\/calendar_few-available_outline.svg",
+            "week": 5,
+            "dayYMD": 20240822,
+            "alt": "一部空き",
+            "holidayFlg": 1,
+            "day": 22,
+            "holiday": "",
+            "status": 100
+        },
+        {
+            "imgURL": "image\/calendar\/svg\/calendar_few-available_outline.svg",
+            "week": 6,
+            "dayYMD": 20240823,
+            "alt": "一部空き",
+            "holidayFlg": 1,
+            "day": 23,
+            "holiday": "",
+            "status": 100
+        },
+        {
+            "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+            "week": 7,
+            "dayYMD": 20240824,
+            "alt": "予約あり",
+            "holidayFlg": 2,
+            "day": 24,
+            "holiday": "",
+            "status": 200
+        },
+        {
+            "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+            "week": 1,
+            "dayYMD": 20240825,
+            "alt": "予約あり",
+            "holidayFlg": 3,
+            "day": 25,
+            "holiday": "",
+            "status": 200
+        },
+        {
+            "imgURL": "image\/calendar\/svg\/calendar_few-available_outline.svg",
+            "week": 2,
+            "dayYMD": 20240826,
+            "alt": "一部空き",
+            "holidayFlg": 1,
+            "day": 26,
+            "holiday": "",
+            "status": 100
+        },
+        {
+            "imgURL": "image\/calendar\/svg\/calendar_few-available_outline.svg",
+            "week": 3,
+            "dayYMD": 20240827,
+            "alt": "一部空き",
+            "holidayFlg": 1,
+            "day": 27,
+            "holiday": "",
+            "status": 100
+        },
+        {
+            "imgURL": "image\/calendar\/svg\/calendar_few-available_outline.svg",
+            "week": 4,
+            "dayYMD": 20240828,
+            "alt": "一部空き",
+            "holidayFlg": 1,
+            "day": 28,
+            "holiday": "",
+            "status": 100
+        },
+        {
+            "imgURL": "image\/calendar\/svg\/calendar_few-available_outline.svg",
+            "week": 5,
+            "dayYMD": 20240829,
+            "alt": "一部空き",
+            "holidayFlg": 1,
+            "day": 29,
+            "holiday": "",
+            "status": 100
+        },
+        {
+            "imgURL": "image\/calendar\/svg\/calendar_few-available_outline.svg",
+            "week": 6,
+            "dayYMD": 20240830,
+            "alt": "一部空き",
+            "holidayFlg": 1,
+            "day": 30,
+            "holiday": "",
+            "status": 100
+        },
+        {
+            "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+            "week": 7,
+            "dayYMD": 20240831,
+            "alt": "予約あり",
+            "holidayFlg": 2,
+            "day": 31,
+            "holiday": "",
+            "status": 200
+        }
+    ],
+    "beforeMonthStartDay": 20240701,
+    "nextMonthStartDay": 20240901,
+    "weekDay": [
+        {
+            "weekDayNo": 7,
+            "dispWeekDay": "日曜"
+        },
+        {
+            "weekDayNo": 1,
+            "dispWeekDay": "月曜"
+        },
+        {
+            "weekDayNo": 2,
+            "dispWeekDay": "火曜"
+        },
+        {
+            "weekDayNo": 3,
+            "dispWeekDay": "水曜"
+        },
+        {
+            "weekDayNo": 4,
+            "dispWeekDay": "木曜"
+        },
+        {
+            "weekDayNo": 5,
+            "dispWeekDay": "金曜"
+        },
+        {
+            "weekDayNo": 6,
+            "dispWeekDay": "土曜"
+        }
+    ],
+    "dayNum": 31,
+    "title": "2024年8月"
+}

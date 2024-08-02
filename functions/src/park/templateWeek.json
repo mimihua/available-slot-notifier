@@ -1,0 +1,527 @@
+{
+    "result": [
+        {
+            "tzoneNo": 10,
+            "tzoneName": "　９時",
+            "timeResult": [
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+                    "rsvNum": 0,
+                    "selectNum": 0,
+                    "alt": "予約あり",
+                    "startTime": 900,
+                    "endTime": 1100,
+                    "useDay": 20240802,
+                    "status": 210
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+                    "rsvNum": 0,
+                    "selectNum": 0,
+                    "alt": "予約あり",
+                    "startTime": 900,
+                    "endTime": 1100,
+                    "useDay": 20240803,
+                    "status": 210
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+                    "rsvNum": 0,
+                    "selectNum": 0,
+                    "alt": "予約あり",
+                    "startTime": 900,
+                    "endTime": 1100,
+                    "useDay": 20240804,
+                    "status": 210
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_available_outline.svg",
+                    "rsvNum": 1,
+                    "selectNum": 0,
+                    "alt": "空き",
+                    "startTime": 900,
+                    "endTime": 1100,
+                    "useDay": 20240805,
+                    "status": 0
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_available_outline.svg",
+                    "rsvNum": 2,
+                    "selectNum": 0,
+                    "alt": "空き",
+                    "startTime": 900,
+                    "endTime": 1100,
+                    "useDay": 20240806,
+                    "status": 0
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_available_outline.svg",
+                    "rsvNum": 1,
+                    "selectNum": 0,
+                    "alt": "空き",
+                    "startTime": 900,
+                    "endTime": 1100,
+                    "useDay": 20240807,
+                    "status": 0
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_available_outline.svg",
+                    "rsvNum": 2,
+                    "selectNum": 0,
+                    "alt": "空き",
+                    "startTime": 900,
+                    "endTime": 1100,
+                    "useDay": 20240808,
+                    "status": 0
+                }
+            ]
+        },
+        {
+            "tzoneNo": 20,
+            "tzoneName": "１１時",
+            "timeResult": [
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_non-operatingtime_outline.svg",
+                    "rsvNum": 0,
+                    "selectNum": 0,
+                    "alt": "受付期間外",
+                    "startTime": 1100,
+                    "endTime": 1300,
+                    "useDay": 20240802,
+                    "status": 700
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+                    "rsvNum": 0,
+                    "selectNum": 0,
+                    "alt": "予約あり",
+                    "startTime": 1100,
+                    "endTime": 1300,
+                    "useDay": 20240803,
+                    "status": 210
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+                    "rsvNum": 0,
+                    "selectNum": 0,
+                    "alt": "予約あり",
+                    "startTime": 1100,
+                    "endTime": 1300,
+                    "useDay": 20240804,
+                    "status": 210
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_available_outline.svg",
+                    "rsvNum": 4,
+                    "selectNum": 0,
+                    "alt": "空き",
+                    "startTime": 1100,
+                    "endTime": 1300,
+                    "useDay": 20240805,
+                    "status": 0
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_available_outline.svg",
+                    "rsvNum": 3,
+                    "selectNum": 0,
+                    "alt": "空き",
+                    "startTime": 1100,
+                    "endTime": 1300,
+                    "useDay": 20240806,
+                    "status": 0
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+                    "rsvNum": 0,
+                    "selectNum": 0,
+                    "alt": "予約あり",
+                    "startTime": 1100,
+                    "endTime": 1300,
+                    "useDay": 20240807,
+                    "status": 210
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_available_outline.svg",
+                    "rsvNum": 3,
+                    "selectNum": 0,
+                    "alt": "空き",
+                    "startTime": 1100,
+                    "endTime": 1300,
+                    "useDay": 20240808,
+                    "status": 0
+                }
+            ]
+        },
+        {
+            "tzoneNo": 30,
+            "tzoneName": "１３時",
+            "timeResult": [
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+                    "rsvNum": 0,
+                    "selectNum": 0,
+                    "alt": "予約あり",
+                    "startTime": 1300,
+                    "endTime": 1500,
+                    "useDay": 20240802,
+                    "status": 210
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+                    "rsvNum": 0,
+                    "selectNum": 0,
+                    "alt": "予約あり",
+                    "startTime": 1300,
+                    "endTime": 1500,
+                    "useDay": 20240803,
+                    "status": 210
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+                    "rsvNum": 0,
+                    "selectNum": 0,
+                    "alt": "予約あり",
+                    "startTime": 1300,
+                    "endTime": 1500,
+                    "useDay": 20240804,
+                    "status": 210
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_available_outline.svg",
+                    "rsvNum": 5,
+                    "selectNum": 0,
+                    "alt": "空き",
+                    "startTime": 1300,
+                    "endTime": 1500,
+                    "useDay": 20240805,
+                    "status": 0
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_available_outline.svg",
+                    "rsvNum": 8,
+                    "selectNum": 0,
+                    "alt": "空き",
+                    "startTime": 1300,
+                    "endTime": 1500,
+                    "useDay": 20240806,
+                    "status": 0
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_available_outline.svg",
+                    "rsvNum": 2,
+                    "selectNum": 0,
+                    "alt": "空き",
+                    "startTime": 1300,
+                    "endTime": 1500,
+                    "useDay": 20240807,
+                    "status": 0
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_available_outline.svg",
+                    "rsvNum": 4,
+                    "selectNum": 0,
+                    "alt": "空き",
+                    "startTime": 1300,
+                    "endTime": 1500,
+                    "useDay": 20240808,
+                    "status": 0
+                }
+            ]
+        },
+        {
+            "tzoneNo": 40,
+            "tzoneName": "１５時",
+            "timeResult": [
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+                    "rsvNum": 0,
+                    "selectNum": 0,
+                    "alt": "予約あり",
+                    "startTime": 1500,
+                    "endTime": 1700,
+                    "useDay": 20240802,
+                    "status": 210
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+                    "rsvNum": 0,
+                    "selectNum": 0,
+                    "alt": "予約あり",
+                    "startTime": 1500,
+                    "endTime": 1700,
+                    "useDay": 20240803,
+                    "status": 210
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+                    "rsvNum": 0,
+                    "selectNum": 0,
+                    "alt": "予約あり",
+                    "startTime": 1500,
+                    "endTime": 1700,
+                    "useDay": 20240804,
+                    "status": 210
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_available_outline.svg",
+                    "rsvNum": 5,
+                    "selectNum": 0,
+                    "alt": "空き",
+                    "startTime": 1500,
+                    "endTime": 1700,
+                    "useDay": 20240805,
+                    "status": 0
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_available_outline.svg",
+                    "rsvNum": 6,
+                    "selectNum": 0,
+                    "alt": "空き",
+                    "startTime": 1500,
+                    "endTime": 1700,
+                    "useDay": 20240806,
+                    "status": 0
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_available_outline.svg",
+                    "rsvNum": 1,
+                    "selectNum": 0,
+                    "alt": "空き",
+                    "startTime": 1500,
+                    "endTime": 1700,
+                    "useDay": 20240807,
+                    "status": 0
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+                    "rsvNum": 0,
+                    "selectNum": 0,
+                    "alt": "予約あり",
+                    "startTime": 1500,
+                    "endTime": 1700,
+                    "useDay": 20240808,
+                    "status": 210
+                }
+            ]
+        },
+        {
+            "tzoneNo": 50,
+            "tzoneName": "１７時",
+            "timeResult": [
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_available_outline.svg",
+                    "rsvNum": 2,
+                    "selectNum": 0,
+                    "alt": "空き",
+                    "startTime": 1700,
+                    "endTime": 1900,
+                    "useDay": 20240802,
+                    "status": 0
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+                    "rsvNum": 0,
+                    "selectNum": 0,
+                    "alt": "予約あり",
+                    "startTime": 1700,
+                    "endTime": 1900,
+                    "useDay": 20240803,
+                    "status": 210
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+                    "rsvNum": 0,
+                    "selectNum": 0,
+                    "alt": "予約あり",
+                    "startTime": 1700,
+                    "endTime": 1900,
+                    "useDay": 20240804,
+                    "status": 210
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+                    "rsvNum": 0,
+                    "selectNum": 0,
+                    "alt": "予約あり",
+                    "startTime": 1700,
+                    "endTime": 1900,
+                    "useDay": 20240805,
+                    "status": 210
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+                    "rsvNum": 0,
+                    "selectNum": 0,
+                    "alt": "予約あり",
+                    "startTime": 1700,
+                    "endTime": 1900,
+                    "useDay": 20240806,
+                    "status": 210
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+                    "rsvNum": 0,
+                    "selectNum": 0,
+                    "alt": "予約あり",
+                    "startTime": 1700,
+                    "endTime": 1900,
+                    "useDay": 20240807,
+                    "status": 210
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+                    "rsvNum": 0,
+                    "selectNum": 0,
+                    "alt": "予約あり",
+                    "startTime": 1700,
+                    "endTime": 1900,
+                    "useDay": 20240808,
+                    "status": 210
+                }
+            ]
+        },
+        {
+            "tzoneNo": 60,
+            "tzoneName": "１９時",
+            "timeResult": [
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+                    "rsvNum": 0,
+                    "selectNum": 0,
+                    "alt": "予約あり",
+                    "startTime": 1900,
+                    "endTime": 2100,
+                    "useDay": 20240802,
+                    "status": 210
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+                    "rsvNum": 0,
+                    "selectNum": 0,
+                    "alt": "予約あり",
+                    "startTime": 1900,
+                    "endTime": 2100,
+                    "useDay": 20240803,
+                    "status": 210
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+                    "rsvNum": 0,
+                    "selectNum": 0,
+                    "alt": "予約あり",
+                    "startTime": 1900,
+                    "endTime": 2100,
+                    "useDay": 20240804,
+                    "status": 210
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+                    "rsvNum": 0,
+                    "selectNum": 0,
+                    "alt": "予約あり",
+                    "startTime": 1900,
+                    "endTime": 2100,
+                    "useDay": 20240805,
+                    "status": 210
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+                    "rsvNum": 0,
+                    "selectNum": 0,
+                    "alt": "予約あり",
+                    "startTime": 1900,
+                    "endTime": 2100,
+                    "useDay": 20240806,
+                    "status": 210
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+                    "rsvNum": 0,
+                    "selectNum": 0,
+                    "alt": "予約あり",
+                    "startTime": 1900,
+                    "endTime": 2100,
+                    "useDay": 20240807,
+                    "status": 210
+                },
+                {
+                    "imgURL": "image\/calendar\/svg\/calendar_full_outline.svg",
+                    "rsvNum": 0,
+                    "selectNum": 0,
+                    "alt": "予約あり",
+                    "startTime": 1900,
+                    "endTime": 2100,
+                    "useDay": 20240808,
+                    "status": 210
+                }
+            ]
+        }
+    ],
+    "beforeWeekStartDay": 20240726,
+    "imstRsvMediaFlg": 3,
+    "weekDay": [
+        {
+            "dispWeekDay": "金曜",
+            "holidayFlg": 1,
+            "dispMonth": "8月",
+            "holiday": "金曜",
+            "dispDay": "2日",
+            "useDay": 20240802
+        },
+        {
+            "dispWeekDay": "土曜",
+            "holidayFlg": 2,
+            "dispMonth": "8月",
+            "holiday": "土曜",
+            "dispDay": "3日",
+            "useDay": 20240803
+        },
+        {
+            "dispWeekDay": "日曜",
+            "holidayFlg": 3,
+            "dispMonth": "8月",
+            "holiday": "日曜",
+            "dispDay": "4日",
+            "useDay": 20240804
+        },
+        {
+            "dispWeekDay": "月曜",
+            "holidayFlg": 1,
+            "dispMonth": "8月",
+            "holiday": "月曜",
+            "dispDay": "5日",
+            "useDay": 20240805
+        },
+        {
+            "dispWeekDay": "火曜",
+            "holidayFlg": 1,
+            "dispMonth": "8月",
+            "holiday": "火曜",
+            "dispDay": "6日",
+            "useDay": 20240806
+        },
+        {
+            "dispWeekDay": "水曜",
+            "holidayFlg": 1,
+            "dispMonth": "8月",
+            "holiday": "水曜",
+            "dispDay": "7日",
+            "useDay": 20240807
+        },
+        {
+            "dispWeekDay": "木曜",
+            "holidayFlg": 1,
+            "dispMonth": "8月",
+            "holiday": "木曜",
+            "dispDay": "8日",
+            "useDay": 20240808
+        }
+    ],
+    "nextStartDay": 20240803,
+    "dayNum": 7,
+    "nextWeekStartDay": 20240809,
+    "equipFg": 0,
+    "lendType": 3,
+    "title": "時間帯",
+    "beforeStartDay": 20240801
+}

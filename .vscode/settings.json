@@ -9,5 +9,19 @@
       "prettier.printWidth": 80,
       "prettier.requireConfig": true,
       "files.eol": "\n",
+      "terminal.integrated.env.windows": {
+         "LANG": "chcp 65001",
+          "PowerShell": "chcp 65001"         
+      },
+      "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+          "source": "PowerShell",
+          "args": [
+            "-NoExit",
+            "-Command",
+            "chcp 65001"
+          ],
+        }
+      }
       
 }

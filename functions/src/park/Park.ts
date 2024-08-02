@@ -1,21 +1,39 @@
 
 import { TennisSlot } from "./TennisSlot";
 
-class Park {
-  private readonly tennisSlot: TennisSlot = new TennisSlot();
+export class Park {
+  private readonly tennisSlot = new TennisSlot();
+
   async findAvailableTennisSlots() {
     
     const bname = "1040";
     // 当天日期并转换为YYYY-MM-DD的字符串
     const daystart : string  = new Date().toISOString().split("T")[0];
+
+    await this.tennisSlot.initBrowser();
     
     // 获取网球场空位信息
-    const result = await this.tennisSlot.findAvailableTennisSlots(bname,daystart);
+    await this.tennisSlot.gotoHomePage(bname, daystart);
     
-    console.log(result);
-  }
+    console.log("gotoHomePage");
+    
+    await this.tennisSlot.doSearchHome();
 
+    console.log("doSearchHome");
+
+    // await this.tennisSlot.searchAndReturnWeekResult();    
+    // await this.tennisSlot.goNextWeekAndReturnWeekResult();
+
+    await this.tennisSlot.getWeekInfoResponses();
+    
+    // console.log("searchAndReturnWeekResult"); 
+
+  }
 }
+
+const park = new Park();
+park.findAvailableTennisSlots();
+
 
 // {
 //     "all": 26,

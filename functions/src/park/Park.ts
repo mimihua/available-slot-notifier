@@ -18,13 +18,13 @@ export class Park {
     await this.tennisCourt.initBrowser();
     
     // 获取网球场空位信息
+    console.log("gotoHomePage");
     await this.tennisCourt.gotoHomePage(bname, daystart);
     
-    console.log("gotoHomePage");
     
+    console.log("doSearchHome");
     await this.tennisCourt.doSearchHome();
 
-    console.log("doSearchHome");
 
 
     const result: Result | null = await this.tennisCourt.getWeekInfoResponses();

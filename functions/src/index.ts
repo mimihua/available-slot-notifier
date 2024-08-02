@@ -12,13 +12,24 @@ import * as logger from "firebase-functions/logger";
 import {onSchedule} from "firebase-functions/v2/scheduler";
 import {checkAndNotifyTennisSlots} from "./checkAndNotifyTennisSlots";
 import {onRequest } from "firebase-functions/v2/https";
+import { exec } from "child_process";
+import { GlobalOptions } from "firebase-functions/v2/options";
 // import {onCall, onRequest} from "firebase-functions/v2/https";
 // import { getFirestore } from "firebase-admin/firestore";
 
 // Start writing functions
 // https://firebase.google.com/docs/functions/typescript
 
-export const scheduledFunction = onSchedule("*/30 * * * *", async () => {
+const config : GlobalOptions = {
+  memory: "1GiB",
+  timeoutSeconds: 300
+}
+
+export const scheduledFunction = onSchedule({
+  schedule: "every 5 mins",
+  timeZone: "Asia/Tokyo",
+  ...config
+}, async () => {
   logger.log("Schedule function triggered!");
   // Fetch all user details.
   await checkAndNotifyTennisSlots();
@@ -27,10 +38,38 @@ export const scheduledFunction = onSchedule("*/30 * * * *", async () => {
 });
 
 export const helloWorld = onRequest({
-  memory: "1GiB",
-  timeoutSeconds: 300,
-},async () => {
+  ...config
+},async (_req, res) => {
 
+  await installChrome();
   await checkAndNotifyTennisSlots();
 
+  res.send("Hello from Firebase!");
 });
+
+
+// Function to execute a shell command and return a promise
+function execCommand(command: string): Promise<{ stdout: string; stderr: string }> {
+  return new Promise((resolve, reject) => {
+    exec(command, (error, stdout, stderr) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve({ stdout, stderr });
+      }
+    });
+  });
+}
+
+// Function to install Chrome using Puppeteer
+async function installChrome() {
+  logger.log("Installing Chrome...");
+  try {
+    const { stdout, stderr } = await execCommand("npx puppeteer browsers install chrome");
+    if (stdout) logger.log(stdout);
+    if (stderr) logger.warn(stderr);
+  } catch (error) {
+    logger.error("Error installing Chrome:" , error);
+  }
+  logger.log("Chrome installed!");
+}

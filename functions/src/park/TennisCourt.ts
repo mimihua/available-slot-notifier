@@ -1,5 +1,6 @@
-import { Browser, HTTPResponse, Page } from "puppeteer";
+import puppeteer,{ Browser, HTTPResponse, Page } from "puppeteer";
 import { Result } from "../interface/timeResult";
+import * as logger from "firebase-functions/logger";
 
 export class TennisCourt {
 
@@ -10,30 +11,30 @@ export class TennisCourt {
   responsesMonth: HTTPResponse[] = []; // 存储所有的 response
 
   // eslint-disable-next-line @typescript-eslint/no-var-requires
-  private PCR = require("puppeteer-chromium-resolver");
+  // private PCR = require("puppeteer-chromium-resolver");
 
   public async initBrowser() {
     
-    const options = {};
+    // const options = {};
     // eslint-disable-next-line new-cap
-    const stats = await this.PCR(options);
+    // const stats = await this.PCR(options);
 
     // 启动无头浏览器
-    this.browser = await stats.puppeteer.launch({ 
-      // headless: true,// 设为 false 以便调试时查看浏览器操作
+    this.browser = await puppeteer.launch({ 
+      headless: true,// 设为 false 以便调试时查看浏览器操作
       // 古いヘッドレスモード（パフォーマンスがいい）
-      headless: "shell",
-      args: [
-        "--disable-gpu",
-        "--disable-dev-shm-usage",
-        "--disable-setuid-sandbox",
-        "--no-first-run",
-        "--no-sandbox",
-        "--no-zygote",
-        "--single-process",
-      ],
+      // headless: "shell",
+      // args: [
+      //   "--disable-gpu",
+      //   "--disable-dev-shm-usage",
+      //   "--disable-setuid-sandbox",
+      //   "--no-first-run",
+      //   "--no-sandbox",
+      //   "--no-zygote",
+      //   "--single-process",
+      // ],
       // 起動ブラウザのパスを指定
-      executablePath: stats.executablePath
+      // executablePath: stats.executablePath
     }); 
     this.page = await this.browser?.newPage();
   }
@@ -79,23 +80,28 @@ export class TennisCourt {
     this.page.on("response", (response) => {
       if (response.url().includes("rsvWOpeInstSrchVacantAjaxAction.do")) {
         this.responses.push(response);
-        console.log(response.url());
+        logger.debug(`rsvWOpeInstSrchVacantAjaxAction.url(): ${response.url()}`);
       }else if(response.url().includes("rsvWOpeInstSrchMonthVacantAjaxAction.do")){
         this.responsesMonth.push(response);
-        console.log(response.url());
+        logger.debug(`rsvWOpeInstSrchMonthVacantAjaxAction.url(): ${response.url()}`);
       }
-
     });
 
     // 进行检索
+    
     await this.page.evaluate(() => {
       const form = (document.forms as any)["form1"];
       const action = (window as any).gRsvWOpeInstSrchVacantAction;
       (window as any).doSearchHome(form, action);
-      
+      return new Promise<string>((resolve) => {
+        resolve(document.body?.textContent || "");
+      });
     });
 
-    await new Promise(resolve => setTimeout(resolve, 2000));    
+    await new Promise(resolve => setTimeout(resolve, 10000));  
+    
+
+
   }
   // 获取所有的 response
   public getResponses(): HTTPResponse[] {

@@ -1,10 +1,11 @@
 
-import * as dotenv from "dotenv";
+// import * as dotenv from "dotenv";
+// import { welcomeMessage } from ".";
 import { Park } from "./park/Park";
 
 
 // 加载环境变量
-dotenv.config();
+// dotenv.config();
 
 // 网球场空位查找
 export async function checkAndNotifyTennisSlots() {

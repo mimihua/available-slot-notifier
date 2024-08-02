@@ -14,6 +14,7 @@ import {checkAndNotifyTennisSlots} from "./checkAndNotifyTennisSlots";
 import {onRequest } from "firebase-functions/v2/https";
 import { exec } from "child_process";
 import { GlobalOptions } from "firebase-functions/v2/options";
+import { defineInt } from "firebase-functions/params";
 // import {onCall, onRequest} from "firebase-functions/v2/https";
 // import { getFirestore } from "firebase-admin/firestore";
 
@@ -22,16 +23,19 @@ import { GlobalOptions } from "firebase-functions/v2/options";
 
 const config : GlobalOptions = {
   memory: "1GiB",
-  timeoutSeconds: 300
+  timeoutSeconds: 300,
+  maxInstances: 1,
 }
+defineInt("SEARCH_WAIT_TIME");
 
 export const scheduledFunction = onSchedule({
-  schedule: "every 5 mins",
+  schedule: "every 30 mins",
   timeZone: "Asia/Tokyo",
   ...config
 }, async () => {
   logger.log("Schedule function triggered!");
-  // Fetch all user details.
+
+  await installChrome();
   await checkAndNotifyTennisSlots();
 
   logger.log("Schedule function completed!");
@@ -44,7 +48,7 @@ export const helloWorld = onRequest({
   await installChrome();
   await checkAndNotifyTennisSlots();
 
-  res.send("Hello from Firebase!");
+  res.send(`${defineInt("SEARCH_WAIT_TIME").value()}! I am a function.`);
 });
 
 

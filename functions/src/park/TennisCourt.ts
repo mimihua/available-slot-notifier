@@ -1,6 +1,7 @@
 import puppeteer,{ Browser, HTTPResponse, Page } from "puppeteer";
 import { Result } from "../interface/timeResult";
 import * as logger from "firebase-functions/logger";
+import { Env } from "../env";
 
 export class TennisCourt {
 
@@ -98,10 +99,9 @@ export class TennisCourt {
       });
     });
 
-    await new Promise(resolve => setTimeout(resolve, 10000));  
+    // use env SEARCH_WAIT_TIME
+    await new Promise(resolve => setTimeout(resolve, Env.searchWaitTime));
     
-
-
   }
   // 获取所有的 response
   public getResponses(): HTTPResponse[] {

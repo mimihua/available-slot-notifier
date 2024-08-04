@@ -14,7 +14,12 @@ export interface Tzone {
     tzoneName: string;
     timeResult: TimeResult[];
 }
-
 export interface Result {
     result: Tzone[];
+}
+
+export interface ParkWeekInfo {
+    bcdNm: string;
+    bcd: string;
+    weekList?: Result;
 }

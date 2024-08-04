@@ -1,5 +1,5 @@
 import puppeteer,{ Browser, HTTPResponse, Page } from "puppeteer";
-import { Result } from "../interface/timeResult";
+import { ParkWeekInfo, Result } from "../interface/timeResult";
 import * as logger from "firebase-functions/logger";
 import { Env } from "../env";
 
@@ -8,8 +8,12 @@ export class TennisCourt {
   private readonly purposeValue: string = "1000_1030";
   private browser: Browser | undefined;
   private page: Page | undefined;
-  responses: HTTPResponse[] = []; // 存储所有的 response
-  responsesMonth: HTTPResponse[] = []; // 存储所有的 response
+  weekJsonTextLs: string[] = []; // 存储所有的 response
+  monthJsonTextLs: string[] = []; // 存储所有的 response
+
+  // key park ID?, value json texct
+  parkJsonTextMap: Map<string, string> = new Map<string, string>();
+  currentParkId = "";
 
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   // private PCR = require("puppeteer-chromium-resolver");
@@ -38,13 +42,28 @@ export class TennisCourt {
       // executablePath: stats.executablePath
     }); 
     this.page = await this.browser?.newPage();
+    
+    // 监听所有的 response 并存储到数组中
+    this.page.on("response", async (response) => {
+      if (response.url().includes("rsvWOpeInstSrchVacantAjaxAction.do")) {
+        const text = await response.text(); // 等待 Promise 解析
+        this.weekJsonTextLs.push(text);
+        this.parkJsonTextMap.set(this.currentParkId, text);
+        logger.debug(`rsvWOpeInstSrchVacantAjaxAction.url(): ${response.url()}`);
+      }else if(response.url().includes("rsvWOpeInstSrchMonthVacantAjaxAction.do")){
+        const text = await response.text(); // 等待 Promise 解析
+        this.monthJsonTextLs.push(text);
+        logger.debug(`rsvWOpeInstSrchMonthVacantAjaxAction.url(): ${response.url()}`);
+      }
+    });
   }
 
   // 访问目标页面
-  public async gotoHomePage(bnameValue: string, daystartValue: string) {
+  public async gotoHomePage(bnameValue: string,  bname: string,daystartValue: string) {
     if (!this.page) {
       throw new Error("Browser is not initialized.");
     }
+    this.currentParkId = bname;
     // 访问目标页面并设置 Cookie
     const cookies = [
       {
@@ -70,26 +89,14 @@ export class TennisCourt {
 
   }
 
-  // 执行检索
+  // index画面执行检索
   public async doSearchHome() {
 
     if (!this.page) {
       throw new Error("Browser is not initialized.");
     }
 
-    // 监听所有的 response 并存储到数组中
-    this.page.on("response", (response) => {
-      if (response.url().includes("rsvWOpeInstSrchVacantAjaxAction.do")) {
-        this.responses.push(response);
-        logger.debug(`rsvWOpeInstSrchVacantAjaxAction.url(): ${response.url()}`);
-      }else if(response.url().includes("rsvWOpeInstSrchMonthVacantAjaxAction.do")){
-        this.responsesMonth.push(response);
-        logger.debug(`rsvWOpeInstSrchMonthVacantAjaxAction.url(): ${response.url()}`);
-      }
-    });
-
-    // 进行检索
-    
+    // 进行检索  
     await this.page.evaluate(() => {
       const form = (document.forms as any)["form1"];
       const action = (window as any).gRsvWOpeInstSrchVacantAction;
@@ -103,42 +110,53 @@ export class TennisCourt {
     await new Promise(resolve => setTimeout(resolve, Env.searchWaitTime));
     
   }
+
   // 获取所有的 response
-  public getResponses(): HTTPResponse[] {
-    return this.responses;
+  public getWeekJsonTextLs(): string[] {
+    return this.weekJsonTextLs;
+  }
+  
+  public getParkJsonTextMap(): Map<string, string> {
+    return this.parkJsonTextMap;
   }
    
   // 次週>> javascript:getWeekInfoAjax(3, 0, 0);
-  public async searchAndReturnWeekResult() {
+  public async searchAndReturnWeekResult(i: number) {
 
     if (!this.page) {
       throw new Error("Browser is not initialized.");
     }
-
+    this.currentParkId = this.currentParkId.concat(i.toString());
+    console.log("searchAndReturnWeekResult--currentParkId",this.currentParkId);
     // 进行检索
     await this.page.evaluate(() => {
-      (window as any).getWeekInfoAjax(3, 0, 0);
+      // getWeekInfoAjax(4, 0, 0) ? 4还是3 的意思？？？
+      (window as any).getWeekInfoAjax(4, 0, 0);
     });
 
     await new Promise(resolve => setTimeout(resolve, 2000));
 
   }
 
-  public async goNextWeekAndReturnWeekResult() {   
-      
-    // return result
-  }
-
   public async getWeekInfoResponses() {
     // 获取所有的 response
-    const responses = this.getResponses();    
-    let result: Result | null = null;
-    for (const response of responses) {
-      const body = await response.text();
-      const jsonObj = JSON.parse(body); 
-      result = jsonObj;
-      console.log("getWeekInfoResponses");
-    }
+    const responses = this.getParkJsonTextMap();    
+
+    // responses的内容
+    console.log("getWeekInfoResponses--responses",responses.size);
+
+    const result: ParkWeekInfo[] = [];
+
+    responses.forEach((value, key) => {
+      const jsonObj: Result = JSON.parse(value);
+      result.push({ bcdNm: key, bcd: "", weekList: jsonObj });
+    });
+
+    // for (const response of responses) {
+    //   const jsonObj = JSON.parse(response.keys().next().value);
+    //   result.push(jsonObj);
+    //   console.log("getWeekInfoResponses--result",result.length);
+    // }
     return result;
   }
 

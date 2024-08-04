@@ -7,7 +7,7 @@ export class TennisCourtInfoHandler {
   private holidays = new Holidays("JP", "ja");
 
   // Class implementation goes here
-  async parseWeekInfo(weekInfo: Result | null): Promise<string> {
+  async parseWeekInfo(bcdNm: string, weekInfo?: Result): Promise<string> {
 
     // 创建一个list用于存储信息
     const info = new Array<string>();
@@ -29,23 +29,25 @@ export class TennisCourtInfoHandler {
           const day = parseInt(date.substring(6, 8), 10);
           const week = new Date(year, month, day).getDay();
           const isHoliday = this.holidays.isHoliday(new Date(year, month, day));
-          if (isHoliday) {
+
+          if (isHoliday && time.alt === "空き") {
             // 日期，星期，祝日，空き
-            info.push(result.tzoneName + time.useDay.toString() + "  " + "祝日" + time.alt);
+            info.push(bcdNm + result.tzoneName + time.useDay.toString() + "  " + "祝日" + time.alt);
 
           } else if ((week === 0 || week === 6) && time.alt === "空き") {
 
-            info.push(result.tzoneName + time.useDay.toString() + "  " + "周末" + time.alt);
+            info.push(bcdNm + result.tzoneName + time.useDay.toString() + "  " + "周末" + time.alt);
 
-          } else if (week !== 0 && week !== 6) {
-            info.push(result.tzoneName + time.useDay.toString() + "  " + "平日" + time.alt);
           }
+          // else {
+          //   info.push(bcdNm + result.tzoneName + time.useDay.toString() + "  " + time.alt);
+          // }
         });
       }
     });
 
     // 返回string类型并用换行符的信息
-    return info.join("\n");
+    return info.length > 0 ? info.join("\n") : "";
   }
 
 }

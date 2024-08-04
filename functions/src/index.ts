@@ -29,7 +29,7 @@ const config : GlobalOptions = {
 defineInt("SEARCH_WAIT_TIME");
 
 export const scheduledFunction = onSchedule({
-  schedule: "0 * 6-24 * * *",
+  schedule: "0 6-23 * * *",
   timeZone: "Asia/Tokyo",
   ...config
 }, async () => {

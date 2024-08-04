@@ -1,4 +1,4 @@
-import puppeteer,{ Browser, HTTPResponse, Page } from "puppeteer";
+import puppeteer,{ Browser, Page } from "puppeteer";
 import { ParkWeekInfo, Result } from "../interface/timeResult";
 import * as logger from "firebase-functions/logger";
 import { Env } from "../env";

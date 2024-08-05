@@ -1,7 +1,7 @@
 import puppeteer,{ Browser, Page } from "puppeteer";
 import { ParkWeekInfo, Result } from "../interface/timeResult";
 import * as logger from "firebase-functions/logger";
-import { Env } from "../env";
+// import { Env } from "../env";
 
 export class TennisCourt {
 
@@ -29,15 +29,15 @@ export class TennisCourt {
       headless: true,// 设为 false 以便调试时查看浏览器操作
       // 古いヘッドレスモード（パフォーマンスがいい）
       // headless: "shell",
-      // args: [
-      //   "--disable-gpu",
-      //   "--disable-dev-shm-usage",
-      //   "--disable-setuid-sandbox",
-      //   "--no-first-run",
-      //   "--no-sandbox",
-      //   "--no-zygote",
-      //   "--single-process",
-      // ],
+      args: [
+        "--disable-gpu",
+        "--disable-dev-shm-usage",
+        "--disable-setuid-sandbox",
+        "--no-first-run",
+        "--no-sandbox",
+        "--no-zygote",
+        "--single-process",
+      ],
       // 起動ブラウザのパスを指定
       // executablePath: stats.executablePath
     }); 
@@ -82,10 +82,10 @@ export class TennisCourt {
     ];
     await this.page.setCookie(...cookies);
 
-    await this.page.goto("https://kouen.sports.metro.tokyo.lg.jp/web/index.jsp", { waitUntil: "networkidle2" });
+    await this.page.goto("https://kouen.sports.metro.tokyo.lg.jp/web/index.jsp", { waitUntil: "networkidle0" });
 
     // 额外等待一段时间以确保页面稳定
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    // await new Promise(resolve => setTimeout(resolve, 2000));
 
   }
 
@@ -96,18 +96,25 @@ export class TennisCourt {
       throw new Error("Browser is not initialized.");
     }
 
-    // 进行检索  
-    await this.page.evaluate(() => {
-      const form = (document.forms as any)["form1"];
-      const action = (window as any).gRsvWOpeInstSrchVacantAction;
-      (window as any).doSearchHome(form, action);
-      return new Promise<string>((resolve) => {
-        resolve(document.body?.textContent || "");
-      });
-    });
+    await Promise.all([
+      this.page.waitForNavigation({ waitUntil: "networkidle0" }),
+      this.page.click("#btn-go"),
+    ]);
+
+    // logger.debug("doSearchHome--response",response);
+
+    // // 进行检索  
+    // await this.page.evaluate(() => {
+    //   const form = (document.forms as any)["form1"];
+    //   const action = (window as any).gRsvWOpeInstSrchVacantAction;
+    //   (window as any).doSearchHome(form, action);
+    //   return new Promise<string>((resolve) => {
+    //     resolve(document.body?.textContent || "");
+    //   });
+    // });
 
     // use env SEARCH_WAIT_TIME
-    await new Promise(resolve => setTimeout(resolve, Env.searchWaitTime));
+    // await new Promise(resolve => setTimeout(resolve, Env.searchWaitTime));
     
   }
 
@@ -127,13 +134,15 @@ export class TennisCourt {
       throw new Error("Browser is not initialized.");
     }
     this.currentParkId = this.currentParkId.concat(i.toString());
-    console.log("searchAndReturnWeekResult--currentParkId",this.currentParkId);
-    // 进行检索
-    await this.page.evaluate(() => {
-      // getWeekInfoAjax(4, 0, 0) ? 4还是3 的意思？？？
-      (window as any).getWeekInfoAjax(4, 0, 0);
-    });
+    logger.debug("searchAndReturnWeekResult--currentParkId",this.currentParkId);
 
+    // 进行检索
+    await Promise.all([
+      this.page.evaluate(() => {
+        // getWeekInfoAjax(4, 0, 0) ? 4还是3 的意思？？？
+        (window as any).getWeekInfoAjax(4, 0, 0);
+      }),
+    ]);
     await new Promise(resolve => setTimeout(resolve, 2000));
 
   }
@@ -143,7 +152,7 @@ export class TennisCourt {
     const responses = this.getParkJsonTextMap();    
 
     // responses的内容
-    console.log("getWeekInfoResponses--responses",responses.size);
+    logger.debug("getWeekInfoResponses--responses",responses.size);
 
     const result: ParkWeekInfo[] = [];
 
@@ -151,12 +160,6 @@ export class TennisCourt {
       const jsonObj: Result = JSON.parse(value);
       result.push({ bcdNm: key, bcd: "", weekList: jsonObj });
     });
-
-    // for (const response of responses) {
-    //   const jsonObj = JSON.parse(response.keys().next().value);
-    //   result.push(jsonObj);
-    //   console.log("getWeekInfoResponses--result",result.length);
-    // }
     return result;
   }
 

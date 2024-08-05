@@ -3,6 +3,7 @@ import { TennisCourtInfoHandler } from "./TennisCourtInfoHandler";
 import { TennisCourt} from "./TennisCourt";
 import { ParkWeekInfo } from "../interface/timeResult";
 import { Webhooks } from "../webhook";
+import { logger } from "firebase-functions/v1";
 
 export class Park {
   private readonly tennisCourt = new TennisCourt();
@@ -27,14 +28,14 @@ export class Park {
     
     // 获取网球场空位信息
     for (const bname of bnameLs) {    
-      console.log("gotoHomePage");
+      logger.debug("gotoHomePage");
       await this.tennisCourt.gotoHomePage(bname.bcd, bname.bcdNm, daystart);
      
-      console.log("doSearchHome");
+      logger.debug("doSearchHome");
       await this.tennisCourt.doSearchHome();
       // 下2周情报
       for (let i = 0; i < 2; i++) {
-        console.log("getWeekInfoAjax");
+        logger.debug("getWeekInfoAjax");
         await this.tennisCourt.searchAndReturnWeekResult(i);    
       } 
     }    
@@ -48,14 +49,18 @@ export class Park {
       // 取得的周情报进行解析
       info.push(await this.tennis.parseWeekInfo(r.bcdNm, r.weekList));
     }
+
+    // logger.debug("info",info);
       
     if (!info.every(item => item === "")) {
       // 发送消息
-      await this.webhooks.sendSimpleMessage(info.join("\n"));
+      await this.webhooks.sendSimpleMessage("以下是网球场的空位信息：\n" + info.join("\n"));
+    }else{
+      logger.debug("No data found");
     }
 
     await this.tennisCourt.closeBrowser();
-    console.log("closeBrowser");
+    logger.debug("closeBrowser");
   }
 }
 

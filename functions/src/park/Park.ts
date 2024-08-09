@@ -47,12 +47,15 @@ export class Park {
 
     for (const r of result) {
       // 取得的周情报进行解析
-      info.push(await this.tennis.parseWeekInfo(r.bcdNm, r.weekList));
+      const result = await this.tennis.parseWeekInfo(r.bcdNm, r.weekList);
+      if (result !== "") {
+        info.push(result);
+      }
     }
 
     // logger.debug("info",info);
       
-    if (!info.every(item => item === "")) {
+    if (info.length !== 0) {
       // 发送消息
       await this.webhooks.sendSimpleMessage("以下是网球场的空位信息：\n" + info.join("\n"));
     }else{

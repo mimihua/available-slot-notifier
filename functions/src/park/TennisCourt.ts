@@ -15,15 +15,8 @@ export class TennisCourt {
   parkJsonTextMap: Map<string, string> = new Map<string, string>();
   currentParkId = "";
 
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  // private PCR = require("puppeteer-chromium-resolver");
-
   public async initBrowser() {
     
-    // const options = {};
-    // eslint-disable-next-line new-cap
-    // const stats = await this.PCR(options);
-
     // 启动无头浏览器
     this.browser = await puppeteer.launch({ 
       headless: true,// 设为 false 以便调试时查看浏览器操作
@@ -38,8 +31,6 @@ export class TennisCourt {
         "--no-zygote",
         "--single-process",
       ],
-      // 起動ブラウザのパスを指定
-      // executablePath: stats.executablePath
     }); 
     this.page = await this.browser?.newPage();
     
@@ -100,21 +91,6 @@ export class TennisCourt {
       this.page.waitForNavigation({ waitUntil: "networkidle0" }),
       this.page.click("#btn-go"),
     ]);
-
-    // logger.debug("doSearchHome--response",response);
-
-    // // 进行检索  
-    // await this.page.evaluate(() => {
-    //   const form = (document.forms as any)["form1"];
-    //   const action = (window as any).gRsvWOpeInstSrchVacantAction;
-    //   (window as any).doSearchHome(form, action);
-    //   return new Promise<string>((resolve) => {
-    //     resolve(document.body?.textContent || "");
-    //   });
-    // });
-
-    // use env SEARCH_WAIT_TIME
-    // await new Promise(resolve => setTimeout(resolve, Env.searchWaitTime));
     
   }
 

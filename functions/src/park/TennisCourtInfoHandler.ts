@@ -32,11 +32,11 @@ export class TennisCourtInfoHandler {
 
           if (isHoliday && time.alt === "空き") {
             // 日期，星期，祝日，空き
-            info.push(bcdNm + result.tzoneName + time.useDay.toString() + "  " + "祝日" + time.alt);
+            info.push(bcdNm + "  " + result.tzoneName + time.useDay.toString() + "  " + "祝日" + time.alt);
 
           } else if ((week === 0 || week === 6) && time.alt === "空き") {
 
-            info.push(bcdNm + result.tzoneName + time.useDay.toString() + "  " + "周末" + time.alt);
+            info.push(bcdNm + "  " + result.tzoneName + time.useDay.toString() + "  " + "周末" + time.alt);
 
           }
           // else {

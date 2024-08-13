@@ -5,10 +5,8 @@ import * as logger from "firebase-functions/logger";
 
 export class TennisCourt {
 
-  private readonly purposeValue: string = "1000_1030";
   private browser: Browser | undefined;
   private page: Page | undefined;
-  weekJsonTextLs: string[] = []; // 存储所有的 response
   monthJsonTextLs: string[] = []; // 存储所有的 response
 
   // key park ID?, value json texct
@@ -38,7 +36,6 @@ export class TennisCourt {
     this.page.on("response", async (response) => {
       if (response.url().includes("rsvWOpeInstSrchVacantAjaxAction.do")) {
         const text = await response.text(); // 等待 Promise 解析
-        this.weekJsonTextLs.push(text);
         this.parkJsonTextMap.set(this.currentParkId, text);
         logger.debug(`rsvWOpeInstSrchVacantAjaxAction.url(): ${response.url()}`);
       }else if(response.url().includes("rsvWOpeInstSrchMonthVacantAjaxAction.do")){
@@ -50,7 +47,7 @@ export class TennisCourt {
   }
 
   // 访问目标页面
-  public async gotoHomePage(bnameValue: string,  bname: string,daystartValue: string) {
+  public async gotoHomePage(bnameValue: string,  bname: string, purposeValue:string, daystartValue: string) {
     if (!this.page) {
       throw new Error("Browser is not initialized.");
     }
@@ -63,7 +60,7 @@ export class TennisCourt {
         domain: "kouen.sports.metro.tokyo.lg.jp"
       }, {
         name: "purpose",
-        value: this.purposeValue,
+        value: purposeValue,
         domain: "kouen.sports.metro.tokyo.lg.jp"
       }, {
         name: "daystart",
@@ -95,10 +92,6 @@ export class TennisCourt {
   }
 
   // 获取所有的 response
-  public getWeekJsonTextLs(): string[] {
-    return this.weekJsonTextLs;
-  }
-  
   public getParkJsonTextMap(): Map<string, string> {
     return this.parkJsonTextMap;
   }
@@ -134,7 +127,7 @@ export class TennisCourt {
 
     responses.forEach((value, key) => {
       const jsonObj: Result = JSON.parse(value);
-      result.push({ bcdNm: key, bcd: "", weekList: jsonObj });
+      result.push({ bcdNm: key, bcd: "",purpose:"", weekList: jsonObj });
     });
     return result;
   }

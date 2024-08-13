@@ -12,7 +12,6 @@ export class TennisCourtInfoHandler {
     // 创建一个list用于存储信息
     const info = new Array<string>();
 
-
     // 无数据时返回
     if (!weekInfo) return "No data found";
 
@@ -39,7 +38,8 @@ export class TennisCourtInfoHandler {
             info.push(bcdNm + "  " + result.tzoneName + time.useDay.toString() + "  " + "周末" + time.alt);
 
           }
-          else if (week >= 3 && week <= 5 && time.alt === "空き") {        
+          // １９時 以后的时间点
+          else if (result.tzoneNo == 60 && week >= 3 && week <= 5 && time.alt === "空き") {        
             info.push(bcdNm + "  " + result.tzoneName + time.useDay.toString() + "  " 
             + new Date(year, month, day).toLocaleDateString("ja-JP-u-ca-japanese", { weekday: "short" })+ time.alt);
           }

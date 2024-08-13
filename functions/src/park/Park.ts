@@ -13,10 +13,11 @@ export class Park {
   async findAvailableTennisSlots() {
     
     const bnameLs: ParkWeekInfo[] = [
-      {bcdNm: "猿江恩賜公園", bcd: "1040"},
-      {bcdNm: "亀戸中央公園", bcd: "1050"},
-      {bcdNm: "木場公園", bcd: "1060"},
-      {bcdNm: "大島小松川公園", bcd: "1160"},
+      {bcdNm: "猿江恩賜公園", bcd: "1040", purpose: "1000_1030"},// purpose=1000_1030 テニス（人工芝）
+      {bcdNm: "亀戸中央公園", bcd: "1050", purpose: "1000_1030"},// purpose=1000_1030 テニス（人工芝）
+      // {bcdNm: "木場公園", bcd: "1060", purpose: "1000_1030"},// purpose=1000_1030 テニス（人工芝）
+      {bcdNm: "大島小松川公園", bcd: "1160", purpose: "1000_1030"},  // purpose=1000_1030 テニス（人工芝）     
+      {bcdNm: "有明テニスＢインドアコート", bcd: "1370", purpose: "1000_1020"},// purpose=1000_1020 テニス（ハード）
     ];
     // 当天日期并转换为YYYY-MM-DD的字符串
     const daystart : string  = new Date().toISOString().split("T")[0];
@@ -29,7 +30,7 @@ export class Park {
     // 获取网球场空位信息
     for (const bname of bnameLs) {    
       logger.debug("gotoHomePage");
-      await this.tennisCourt.gotoHomePage(bname.bcd, bname.bcdNm, daystart);
+      await this.tennisCourt.gotoHomePage(bname.bcd, bname.bcdNm, bname.purpose ,daystart);
      
       logger.debug("doSearchHome");
       await this.tennisCourt.doSearchHome();

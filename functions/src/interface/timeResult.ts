@@ -21,5 +21,6 @@ export interface Result {
 export interface ParkWeekInfo {
     bcdNm: string;
     bcd: string;
+    purpose: string;
     weekList?: Result;
 }

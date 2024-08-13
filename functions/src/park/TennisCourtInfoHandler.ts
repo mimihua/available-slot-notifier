@@ -39,9 +39,10 @@ export class TennisCourtInfoHandler {
             info.push(bcdNm + "  " + result.tzoneName + time.useDay.toString() + "  " + "周末" + time.alt);
 
           }
-          // else {
-          //   info.push(bcdNm + result.tzoneName + time.useDay.toString() + "  " + time.alt);
-          // }
+          else if (week >= 3 && week <= 5 && time.alt === "空き") {        
+            info.push(bcdNm + "  " + result.tzoneName + time.useDay.toString() + "  " 
+            + new Date(year, month, day).toLocaleDateString("ja-JP-u-ca-japanese", { weekday: "short" })+ time.alt);
+          }
         });
       }
     });

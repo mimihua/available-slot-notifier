@@ -110,7 +110,6 @@ export class TennisCourt {
       throw new Error("Browser is not initialized.");
     }
     this.currentParkId = this.currentParkId.concat(i.toString());
-    logger.debug("searchAndReturnWeekResult--currentParkId",this.currentParkId);
 
     // 进行检索
     await Promise.all([
@@ -121,6 +120,7 @@ export class TennisCourt {
     ]);
     await new Promise(resolve => setTimeout(resolve, 2000));
 
+    logger.debug("searchAndReturnWeekResult--currentParkId",this.currentParkId);
   }
 
   public async getWeekInfoResponses() {

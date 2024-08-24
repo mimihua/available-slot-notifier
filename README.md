@@ -1,4 +1,4 @@
-C:\Users\xuhong\Documents\GitHub\available-slot-notifier 目录下执行
+C:\Users\xxxx\Documents\GitHub\available-slot-notifier 目录下执行
 
 ## Deploy
 

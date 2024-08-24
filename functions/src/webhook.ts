@@ -1,8 +1,12 @@
 import axios from "axios";
+import dotenv from "dotenv";
+import { defineString } from "firebase-functions/params";
+
+dotenv.config();
 
 export class Webhooks {
   
-  private readonly webhookUrl: string = "https://discord.com/api/webhooks/1267023633793028177/cFbEvAR6ZmJl_A1Lhkn26Rm1O_OPFZYo8d4YcHe1yEsOK072tVOsHjZ1XkHXKYwebhDH";
+  private readonly webhookUrl: string = defineString("WEBHOOK_URL",{default:""}).value();
 
   public async sendSimpleMessage(info: string) {
     try {

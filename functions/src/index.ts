@@ -14,12 +14,7 @@ import {checkAndNotifyTennisSlots} from "./checkAndNotifyTennisSlots";
 import {onRequest } from "firebase-functions/v2/https";
 import { exec } from "child_process";
 import { GlobalOptions } from "firebase-functions/v2/options";
-import { defineInt } from "firebase-functions/params";
-// import {onCall, onRequest} from "firebase-functions/v2/https";
-// import { getFirestore } from "firebase-admin/firestore";
-
-// Start writing functions
-// https://firebase.google.com/docs/functions/typescript
+import { defineInt, defineSecret } from "firebase-functions/params";
 
 const config : GlobalOptions = {
   memory: "1GiB",
@@ -27,10 +22,12 @@ const config : GlobalOptions = {
   maxInstances: 1,
 }
 defineInt("SEARCH_WAIT_TIME");
+// Cloud Functions
 
 export const scheduledFunction = onSchedule({
-  schedule: "0 6-23 1-9,11-13,15-31 * *",
+  schedule: "0,30 6-23,0 * * *",
   timeZone: "Asia/Tokyo",
+  secrets: [defineSecret("WEBHOOK_URL")],
   ...config
 }, async () => {
   logger.log("Schedule function triggered!");
@@ -42,6 +39,7 @@ export const scheduledFunction = onSchedule({
 });
 
 export const helloWorld = onRequest({
+  secrets: [defineSecret("WEBHOOK_URL")],
   ...config
 },async (_req, res) => {
 
@@ -66,8 +64,8 @@ function execCommand(command: string): Promise<{ stdout: string; stderr: string 
 }
 
 // Function to install Chrome using Puppeteer
+logger.log("Installing Chrome...");
 async function installChrome() {
-  logger.log("Installing Chrome...");
   try {
     const { stdout, stderr } = await execCommand("npx puppeteer browsers install chrome");
     if (stdout) logger.log(stdout);

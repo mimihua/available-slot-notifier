@@ -17,7 +17,7 @@ export class Park {
       {bcdNm: "亀戸中央公園", bcd: "1050", purpose: "1000_1030"},// purpose=1000_1030 テニス（人工芝）
       // {bcdNm: "木場公園", bcd: "1060", purpose: "1000_1030"},// purpose=1000_1030 テニス（人工芝）
       {bcdNm: "大島小松川公園", bcd: "1160", purpose: "1000_1030"},  // purpose=1000_1030 テニス（人工芝）     
-      {bcdNm: "有明テニスＢインドアコート", bcd: "1370", purpose: "1000_1020"},// purpose=1000_1020 テニス（ハード）
+      // {bcdNm: "有明テニスＢインドアコート", bcd: "1370", purpose: "1000_1020"},// purpose=1000_1020 テニス（ハード）
     ];
     // 当天日期并转换为YYYY-MM-DD的字符串
     const daystart : string  = new Date().toISOString().split("T")[0];
@@ -61,6 +61,7 @@ export class Park {
       await this.webhooks.sendSimpleMessage("以下是网球场的空位信息：\n" + info.join("\n"));
     }else{
       logger.debug("No data found");
+      await this.webhooks.sendSimpleMessage("No data found");
     }
 
     await this.tennisCourt.closeBrowser();

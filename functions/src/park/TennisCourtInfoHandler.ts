@@ -28,6 +28,7 @@ export class TennisCourtInfoHandler {
           const day = parseInt(date.substring(6, 8), 10);
           const week = new Date(year, month, day).getDay();
           const isHoliday = this.holidays.isHoliday(new Date(year, month, day));
+          const weekday = new Date(year, month, day).toLocaleDateString("ja-JP-u-ca-japanese", { weekday: "short" });
 
           if (isHoliday && time.alt === "空き") {
             // 日期，星期，祝日，空き
@@ -35,13 +36,13 @@ export class TennisCourtInfoHandler {
 
           } else if ((week === 0 || week === 6) && time.alt === "空き") {
 
-            info.push(bcdNm + "  " + result.tzoneName + time.useDay.toString() + "  " + "周末" + time.alt);
+            info.push(bcdNm + "  " + result.tzoneName + time.useDay.toString() + "  " + weekday + "  " + time.alt);
 
           }
           // １９時 以后的时间点
           else if (result.tzoneNo == 60 && week >= 3 && week <= 5 && time.alt === "空き") {        
             info.push(bcdNm + "  " + result.tzoneName + time.useDay.toString() + "  " 
-            + new Date(year, month, day).toLocaleDateString("ja-JP-u-ca-japanese", { weekday: "short" })+ time.alt);
+            + weekday + time.alt);
           }
         });
       }

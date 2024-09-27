@@ -61,7 +61,7 @@ export class Park {
       await this.webhooks.sendSimpleMessage("以下是网球场的空位信息：\n" + info.join("\n"));
     }else{
       logger.debug("No data found");
-      await this.webhooks.sendSimpleMessage("No data found");
+      // await this.webhooks.sendSimpleMessage("No data found");
     }
 
     await this.tennisCourt.closeBrowser();

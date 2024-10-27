@@ -1,3 +1,4 @@
+import { logger } from "firebase-functions/v1";
 import { Result } from "../interface/timeResult";
 import Holidays from "date-holidays";
 
@@ -17,8 +18,9 @@ export class TennisCourtInfoHandler {
 
     // 时间点的情报处理
     weekInfo.result.forEach((result) => {
+      
       // １７時 以后的时间点
-      if (result.tzoneNo >= 50) {
+      if (result.tzoneNo >= 10) { // TODO：夏季冬季的时间选择不同
         const timeResult = result.timeResult;
         timeResult.forEach((time) => {
           //  YYYYMMDD类型的日期判断周末
@@ -30,19 +32,25 @@ export class TennisCourtInfoHandler {
           const isHoliday = this.holidays.isHoliday(new Date(year, month, day));
           const weekday = new Date(year, month, day).toLocaleDateString("ja-JP-u-ca-japanese", { weekday: "short" });
 
-          if (isHoliday && time.alt === "空き") {
-            // 日期，星期，祝日，空き
+          // 祝日且休息日
+          if (isHoliday && isHoliday[0].type !== "observance" && time.alt === "空き") {
+
             info.push(bcdNm + "  " + result.tzoneName + time.useDay.toString() + "  " + "祝日" + time.alt);
 
+            logger.debug("result  : ",result);
+            // 休息日
           } else if ((week === 0 || week === 6) && time.alt === "空き") {
 
             info.push(bcdNm + "  " + result.tzoneName + time.useDay.toString() + "  " + weekday + "  " + time.alt);
 
+            logger.debug("result  : ",result);
           }
           // １９時 以后的时间点
           else if (result.tzoneNo == 60 && week >= 3 && week <= 5 && time.alt === "空き") {        
             info.push(bcdNm + "  " + result.tzoneName + time.useDay.toString() + "  " 
             + weekday + time.alt);
+            
+            logger.debug("result  : ",result);
           }
         });
       }

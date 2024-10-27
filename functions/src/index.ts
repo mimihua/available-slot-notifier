@@ -75,3 +75,7 @@ async function installChrome() {
   }
   logger.log("Chrome installed!");
 }
+
+// debug code
+// (cd src && ts-node index.ts)
+// checkAndNotifyTennisSlots();

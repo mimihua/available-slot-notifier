@@ -13,3 +13,23 @@ firebase deploy --only functions:helloWorld
 
 $ firebase use dev
 $ firebase deploy --only functions
+
+
+1.Node.js (npm) install
+2.firebase install
+
+# firebase setting
+npm install -g firebase-tools
+firebase login (PowerShell execution policy is set to allow script execution： Set-ExecutionPolicy RemoteSigned -Scope CurrentUser)
+
+# setup package
+npm install (Execute under the package.jscon directory file)
+
+Run API
+# debug 
+(cd functions && npm run serve)
+
+# debug ts
+vocode実行とデバッグ：Node.js
+npm install -g ts-node
+de index.ts

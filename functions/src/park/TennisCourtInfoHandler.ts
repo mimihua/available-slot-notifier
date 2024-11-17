@@ -19,7 +19,7 @@ export class TennisCourtInfoHandler {
     // 时间点的情报处理
     weekInfo.result.forEach((result) => {
       
-      // １７時 以后的时间点
+      // 9時 以后的时间点
       if (result.tzoneNo >= 10) { // TODO：夏季冬季的时间选择不同
         const timeResult = result.timeResult;
         timeResult.forEach((time) => {

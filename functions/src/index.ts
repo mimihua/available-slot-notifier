@@ -25,7 +25,7 @@ defineInt("SEARCH_WAIT_TIME");
 // Cloud Functions
 
 export const scheduledFunction = onSchedule({
-  schedule: "0,30 6-23,0 * * *",
+  schedule: "0,20 6-23,0-1 * * *",
   timeZone: "Asia/Tokyo",
   secrets: [defineSecret("WEBHOOK_URL")],
   ...config

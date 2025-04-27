@@ -19,8 +19,8 @@ export class TennisCourtInfoHandler {
     // 时间点的情报处理
     weekInfo.result.forEach((result) => {
       
-      // 9時 以后的时间点
-      if (result.tzoneNo >= 10) { // TODO：夏季冬季的时间选择不同
+      // 9時 - １５時 时间点
+      if (result.tzoneNo >= 10 && result.tzoneNo <= 40) { // TODO：夏季冬季的时间选择不同
         const timeResult = result.timeResult;
         timeResult.forEach((time) => {
           //  YYYYMMDD类型的日期判断周末
@@ -45,13 +45,13 @@ export class TennisCourtInfoHandler {
 
             logger.debug("result  : ",result);
           }
-          // １９時 以后的时间点
-          else if (result.tzoneNo == 60 && week >= 3 && week <= 5 && time.alt === "空き") {        
-            info.push(bcdNm + "  " + result.tzoneName + time.useDay.toString() + "  " 
-            + weekday + time.alt);
+          // // 平日 １９時 以后的时间点
+          // else if (result.tzoneNo == 60 && week >= 3 && week <= 5 && time.alt === "空き") {        
+          //   info.push(bcdNm + "  " + result.tzoneName + time.useDay.toString() + "  " 
+          //   + weekday + time.alt);
             
-            logger.debug("result  : ",result);
-          }
+          //   logger.debug("result  : ",result);
+          // }
         });
       }
     });

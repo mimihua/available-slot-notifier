@@ -19,8 +19,8 @@ export class TennisCourtInfoHandler {
     // 时间点的情报处理
     weekInfo.result.forEach((result) => {
       
-      // 9時 - １５時 时间点
-      if (result.tzoneNo >= 10 && result.tzoneNo <= 40) { // TODO：夏季冬季的时间选择不同
+      // 9時 ~
+      if (result.tzoneNo >= 10 ) { // TODO：夏季冬季的时间选择不同
         const timeResult = result.timeResult;
         timeResult.forEach((time) => {
           //  YYYYMMDD类型的日期判断周末
